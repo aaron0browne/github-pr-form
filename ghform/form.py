@@ -86,7 +86,7 @@ class Form(object):
         text = '{}\n\t{}\n'.format(field['name'], field['description'])
         default = None
         show_default = False
-        if field['type'] == 'choice':
+        if field['type'] in ('choice', 'username') and 'options' in field:
             opt_list = [opt['name'] for opt in field['options']]
             opt_txt = ', '.join(opt_list)
             text = text + '\toptions: {}\n'.format(opt_txt)
@@ -115,7 +115,7 @@ class Form(object):
     def validate_field_response(self, field):
         valid = True
         msg = ''
-        if field['type'] == 'choice':
+        if field['type'] in ('choice', 'username') and 'options' in field:
             opt_list = [opt['name'] for opt in field['options']]
             if field['response'] not in opt_list:
                 msg = 'please pick one of the options'
