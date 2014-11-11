@@ -70,11 +70,12 @@ class Form(object):
     def write_png(self):
         self.pngname = self.formname + '-{}.png'.format(time.time())
         self.pngpath = os.path.join(self.formdir, self.pngname)
-        driver = webdriver.PhantomJS(service_log_path=os.path.devnull)
+        driver = webdriver.Firefox()
         driver.set_window_size(800, 600)
-        driver.get(self.htmlpath)
+        driver.get('file://' + self.htmlpath)
         driver.execute_script("document.body.bgColor = 'white'")
         driver.save_screenshot(self.pngpath)
+        driver.quit()
 
     def pngurl(self, tracker):
         return 'https://github.com/{}/blob/{}/{}'.format(tracker.ghname,
