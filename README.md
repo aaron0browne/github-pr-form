@@ -38,7 +38,7 @@ Add a template to the tracking repo with:
 
 `ghform addtpl --tracker=octocat/tracking /Users/user/Desktop/rfc.json`
 
-## Usage
+## General Usage
 
 Generate a form and add it to a pull request with:
 
@@ -55,6 +55,34 @@ Field Name
 ```
 
 Once a form has been completed, it is saved in the tracking repo in `json`, `md`, `html`, and `png` formats. A comment is added on the pull request declaring that a form is about to be uploaded and linking to the `png` format. Another comment is added with the entire form in `md` format. If any actions (label application or user assignment, see [below](#field-types-and-attributes)) have been triggered, they are carried out. Note that if a form from from the same template has previously been added to the given pull request, the files in the tracking repo are overwritten (of course, they remain in the repo commit history).
+
+## Example Usage
+
+The [aaron0browne/github-pr-form-tracking](https://github.com/aaron0browne/github-pr-form-tracking) was set up as both a target and a tracking repo, which wouldn't make any sense in the real world, but is useful for this example. An issue was added to store uploaded images and another to receive a generated form (since there was no pull request to submit). The commands executed and results were:
+
+`ghform init --tracker=aaron0browne/github-pr-form-tracking --token=XXXXXX aaron0browne/github-pr-form-tracking`
+
+This command just wrote a local config file with the given information.
+
+`ghform addtpl --tracker=aaron0browne/github-pr-form-tracking rfc.json`
+
+This command added a `tpl` directory to the tracking repo and the example [rfc.json](ghform/rfc.json) template in that directory.
+
+`ghform add --tpl=rfc aaron0browne/github-pr-form-tracking/issues/2`
+
+This command kicked off the form response prompts at the command line:
+
+![example-cli](https://cloud.githubusercontent.com/assets/3409975/5013229/25c2b544-6a5a-11e4-9571-4734dc109dbf.png)
+
+Once all the prompts were completed, the form was formatted, converted, and saved as `json`, `md`, `html`, and `png` in the tracking repo:
+
+![example-storage](https://cloud.githubusercontent.com/assets/3409975/5013238/31599422-6a5a-11e4-852b-4f8d7a76b903.png)
+
+And two comments were added to the [target issue](https://github.com/aaron0browne/github-pr-form-tracking/issues/2) (the first comment was manually added when the issue was opened):
+
+![example-result](https://cloud.githubusercontent.com/assets/3409975/5013236/2b81a8b4-6a5a-11e4-81b9-43be3d4bd713.png)
+
+Note that the defined labels were added to the issue and @aaron0browne was assigned as well.
 
 ## Template Format
 
@@ -154,6 +182,7 @@ The only currently defined action is `assign` on username fields. The chosen use
 
 ## Further Development
 
+- Fix `rfc` label bug where the label gets added and immediately removed
 - Ability to define standard 'plans' as URLs on a per target repo basis
 
 Please open an issue if you have a suggestion or find a bug.
