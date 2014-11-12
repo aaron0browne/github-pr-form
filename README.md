@@ -58,7 +58,7 @@ Once a form has been completed, it is saved in the tracking repo in `json`, `md`
 
 ## Template Format
 
-A sample template file is included [here](rfc.json). Template files are in json format, with the following structure (where `...` represents a repeating structure in a list):
+A sample template file is included [here](ghform/rfc.json). Template files are in json format, with the following structure (where `...` represents a repeating structure in a list):
 
 ```json
 {
