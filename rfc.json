@@ -1,0 +1,209 @@
+{
+    "name": "Request for Change",
+    "fields": [
+        {
+            "name": "Status",
+            "type": "choice",
+            "description": "the status of this rfc",
+            "options": [
+                {
+                    "name": "created",
+                    "label": "rfc"
+                },
+                {
+                    "name": "submitted",
+                    "label": "rfc:status:submitted"
+                },
+                {
+                    "name": "approved",
+                    "label": "rfc:status:approved"
+                },
+                {
+                    "name": "declined"
+                },
+                {
+                    "name": "merged"
+                },
+                {
+                    "name": "implemented",
+                    "label": "rfc:status:implemented"
+                }
+            ]
+        }
+    ],
+    "groups": [
+        {
+            "name": "Roles",
+            "fields": [
+                {
+                    "name": "Initiator",
+                    "type": "username",
+                    "description": "issue or PR submitter",
+                    "default": "submitter"
+                },
+                {
+                    "name": "Assignee",
+                    "type": "username",
+                    "description": "a project manager, not the initiator",
+                    "action": "assign",
+                    "options": [
+                        {
+                            "name": "aaron0browne"
+                        }
+                    ]
+                },
+                {
+                    "name": "Implementer",
+                    "type": "username",
+                    "description": "can be the initiator, not the assignee",
+                    "default": "submitter"
+                }
+            ]
+        },
+        {
+            "name": "RFC Description",
+            "fields": [
+                {
+                    "name": "Type of Change",
+                    "type": "choice",
+                    "description": "the type of change requested",
+                    "options": [
+                        {
+                            "name": "bug",
+                            "label": "rfc:type:bug"
+                        },
+                        {
+                            "name": "upkeep",
+                            "label": "rfc:type:upkeep"
+                        },
+                        {
+                            "name": "refactor",
+                            "label": "rfc:type:refactor"
+                        },
+                        {
+                            "name": "feature",
+                            "label": "rfc:type:feature"
+                        }
+                    ]
+                },
+                {
+                    "name": "Description of Change",
+                    "type": "text",
+                    "description": "brief summary of the change"
+                },
+                {
+                    "name": "Reason for Change",
+                    "type": "text",
+                    "description": "brief explanation, reference any related issues"
+                },
+                {
+                    "name": "Client Visibility",
+                    "type": "choice",
+                    "description": "probability that average client will notice the change",
+                    "options": [
+                        {
+                            "name": "none",
+                            "label": "rfc:visibility:none"
+                        },
+                        {
+                            "name": "low",
+                            "label": "rfc:visibility:low"
+                        },
+                        {
+                            "name": "medium",
+                            "label": "rfc:visibility:medium"
+                        },
+                        {
+                            "name": "high",
+                            "label": "rfc:visibility:high"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Implementation",
+            "fields": [
+                {
+                    "name": "Start Date and Time",
+                    "type": "datetime",
+                    "description": "proposed, must be after approval (format as MM-DD-YY HH:MM)"
+                },
+                {
+                    "name": "Implementation Duration",
+                    "type": "time",
+                    "description": "estimated amount of time to implement (format as HH:MM)"
+                },
+                {
+                    "name": "Downtime Duration",
+                    "type": "time",
+                    "description": "estimated amount required downtime (format as HH:MM)"
+                },
+                {
+                    "name": "Revert Duration",
+                    "type": "time",
+                    "description": "estimated amount of time to revert, if necessary (format as HH:MM)"
+                },
+                {
+                    "name": "Risk Assessment Category",
+                    "type": "choice",
+                    "description": "risk categorization, as determined from the risk assessment grid",
+                    "options": [
+                        {
+                            "name": "low",
+                            "label": "rfc:risk:low"
+                        },
+                        {
+                            "name": "medium",
+                            "label": "rfc:risk:medium"
+                        },
+                        {
+                            "name": "high",
+                            "label": "rfc:risk:high"
+                        }
+                    ]
+                },
+                {
+                    "name": "Change Request Urgency",
+                    "type": "choice",
+                    "description": "urgency of request; if urgent, this form should be post-hoc",
+                    "options": [
+                        {
+                            "name": "standard",
+                            "label": "rfc:urgency:standard"
+                        },
+                        {
+                            "name": "urgent",
+                            "label": "rfc:urgency:urgent"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "name": "Plans",
+            "fields": [
+                {
+                    "name": "Testing Plan",
+                    "type": "url/text",
+                    "description": "url or description of testing plan"
+                },
+                {
+                    "name": "Proof of Testing",
+                    "type": "url/text",
+                    "description": "url of a screenshot showing successful automated testing or other proof of testing"
+                },
+                {
+                    "name": "Implementation Plan",
+                    "type": "url/text",
+                    "description": "url or description of implementation plan"
+                },
+                {
+                    "name": "Revert Plan",
+                    "type": "url/text",
+                    "description": "url or description of revert plan"
+                }
+            ]
+        }
+    ]
+}
