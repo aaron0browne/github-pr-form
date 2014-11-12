@@ -151,3 +151,9 @@ Any field type may define a default (a string), which is suggested when response
 ### Action
 
 The only currently defined action is `assign` on username fields. The chosen user will be assigned to the pull request.
+
+## Further Development
+
+- Ability to define standard 'plans' as URLs on a per target repo basis
+
+Please open an issue if you have a suggestion or find a bug.
