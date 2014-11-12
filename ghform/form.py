@@ -84,13 +84,13 @@ class Form(object):
 
     def prepare_field_prompt_kwargs(self, field, pull):
         text = '{}\n\t{}\n'.format(field['name'], field['description'])
-        default = None
+        default = field.get('default', None)
         show_default = False
         if field['type'] in ('choice', 'username') and 'options' in field:
             opt_list = [opt['name'] for opt in field['options']]
             opt_txt = ', '.join(opt_list)
             text = text + '\toptions: {}\n'.format(opt_txt)
-            default = opt_list[0]
+            default = default or opt_list[0]
             show_default = True
         if field['type'] == 'username':
             if field.get('default', '') == 'submitter':
