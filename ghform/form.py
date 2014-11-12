@@ -21,9 +21,11 @@ class Form(object):
         self.jsonname = self.formname + '.json'
         self.mdname = self.formname + '.md'
         self.htmlname = self.formname + '.html'
+        self.pngname = self.formname + '.png'
         self.jsonpath = os.path.join(self.formdir, self.jsonname)
         self.mdpath = os.path.join(self.formdir, self.mdname)
         self.htmlpath = os.path.join(self.formdir, self.htmlname)
+        self.pngpath = os.path.join(self.formdir, self.pngname)
         if os.path.exists(self.jsonpath):
             datapath = self.jsonpath
         else:
@@ -68,8 +70,6 @@ class Form(object):
             f.write(self.to_html())
 
     def write_png(self):
-        self.pngname = self.formname + '-{}.png'.format(time.time())
-        self.pngpath = os.path.join(self.formdir, self.pngname)
         driver = webdriver.Firefox()
         driver.set_window_size(800, 600)
         driver.get('file://' + self.htmlpath)
