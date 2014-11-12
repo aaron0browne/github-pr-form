@@ -1,5 +1,3 @@
-import ez_setup
-ez_setup.use_setuptools()
 from setuptools import setup, find_packages
 
 with open('README.rst', 'r') as f:
@@ -7,13 +5,13 @@ with open('README.rst', 'r') as f:
 
 setup(
     name = 'github-pr-form',
-    version = '0.1',
+    version = '0.1.1',
     author = 'Aaron N Browne',
     author_email = 'aaron0browne@gmail.com',
     url = 'https://github.com/aaron0browne/github-pr-form',
     description = 'A small python utility for generating forms from the command line and adding them to GitHub pull requests or issues, while tracking them in a secondary github repo.',
     long_description = long_description,
-    download_url = 'httpd://github.com/aaron0browne/github-pr-form/tarball/v0.1',
+    download_url = 'httpd://github.com/aaron0browne/github-pr-form/tarball/v0.1.1',
     license = 'MIT License',
     keywords = ['github', 'rfc', 'change control', 'form', 'pull request'],
     classifiers = [
